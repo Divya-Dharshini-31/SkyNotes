@@ -1,5 +1,10 @@
 spring:
   application:
     name: skynotes
+  data:
+    mongodb:
+      uri: mongodb+srv://sdivyadharshini315_db_user:jWkfeVqg82PuoDfq@skynotescluster.ffwkykh.mongodb.net/?appName=SkynotesCluster
 server:
     port: 8081
+ 
+  
