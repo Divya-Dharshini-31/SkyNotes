@@ -5,6 +5,7 @@ import com.divya.skynotes.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import com.divya.skynotes.service.UserService;
 import com.divya.skynotes.model.User;
+import com.divya.skynotes.dto.LoginRequest;
 
 @RestController
 @RequestMapping("/api/users")
@@ -19,5 +20,9 @@ public class UserController {
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
         return userService.registerUser(user);
+    }
+    @PostMapping("/login")
+    public String loginUser(@RequestBody LoginRequest request) {
+        return userService.loginUser(request);
     }
 }
