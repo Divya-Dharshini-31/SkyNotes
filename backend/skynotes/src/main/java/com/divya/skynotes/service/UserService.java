@@ -1,5 +1,6 @@
 package com.divya.skynotes.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.divya.skynotes.model.User;
@@ -13,9 +14,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
     public User registerUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already exists");
-        }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         return userRepository.save(user);
     }
 }
