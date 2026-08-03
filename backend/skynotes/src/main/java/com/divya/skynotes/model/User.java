@@ -3,6 +3,7 @@ package com.divya.skynotes.model;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="users")
@@ -10,6 +11,7 @@ public class User {
     @Id
     private String id;      //primary key | mongo db id is different so we use string id here
     private String name;
+    @Indexed(unique = true)
     private String email;
     private String password;        //will be hashed before storing in db
     private LocalDateTime createdAt;

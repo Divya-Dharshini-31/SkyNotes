@@ -15,9 +15,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
     public User registerUser(User user) {
+
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already registered");
+        }
+
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
+
         user.setPassword(hashedPassword);
+
         return userRepository.save(user);
     }
     public String loginUser(LoginRequest request) {
