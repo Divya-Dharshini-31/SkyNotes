@@ -4,10 +4,10 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://sdivyadharshini315_db_user:tQNv0xpmgV9Sj6iS@skynotescluster.ffwkykh.mongodb.net/skynotes?appName=SkynotesCluster
+      uri: ${MONGODB_URI}
 
 server:
-  port: 8081
+  port: ${PORT:8081}
 
 logging:
   level:
